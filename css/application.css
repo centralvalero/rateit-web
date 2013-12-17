@@ -1,0 +1,16 @@
+.sections-even {
+	height: 500px;
+	padding: 10px;
+	background-color: grey;
+}
+.sections-even h1 {
+	text-align:right;
+}
+.sections-odd {
+	height: 500px;
+	padding: 10px;
+	background-color: silver;
+}
+div { 
+	padding-top: 50px;
+}
