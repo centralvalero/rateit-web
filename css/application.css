@@ -1,5 +1,5 @@
 .sections-even {
-	height: 500px;
+	min-height: 500px;
 	padding: 10px;
 	background-color: grey;
 }
@@ -7,10 +7,12 @@
 	text-align:right;
 }
 .sections-odd {
-	height: 500px;
+	min-height: 500px;
 	padding: 10px;
 	background-color: silver;
 }
-div { 
-	padding-top: 50px;
+#top { 
+	padding-top: 80px;
+	padding-left:10px;
+	padding-right:10px;
 }
