@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="js/bootstrap.js" type="text/javascript" ></script>
-	<script src="js/bootstrap-min.js" type="text/javascript" ></script>
     <link rel="stylesheet" type="text/css" href="css/application.css" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-min.css" />
     <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme-min.css" />
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script src="js/bootstrap.js" type="text/javascript" ></script>
 	<title>RateIt</title>
 </head>
-<body data-spy="scroll" data-target=".navbar-example">
+<body>
 <!-- header -->
-<nav class="navbar navbar-default navbar-fixed-top navbar-example" role="navigation">
-<ul class="nav navbar-nav navbar-left nav-tabs">
-    <li><a href="#link1">Link</a></li>
-	<li><a href="#link2">Action</a></li>
-	<li><a href="#link3">Another action</a></li>
-	<li><a href="#link4">Something else here</a></li>
+<nav class="navbar navbar-inverse navbar-fixed-top" id="myNavbar" role="navigation">
+<ul class="nav navbar-nav" id="mynav">
+    <li><a href="#link1" class="droppedHover">link1</a></li>
+	<li><a href="#link2" class="">link2</a></li>
+	<li><a href="#link3" class="">link3</a></li>
+	<li><a href="#link4" class="">link4</a></li>
 </ul>
 </nav>
 <!-- end header -->
 
 <!-- main body -->
-<div>
+<div id="top">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sagittis hendrerit tincidunt. Integer ac viverra orci, sed venenatis augue. Vestibulum placerat, sem id tincidunt lacinia, diam odio porta quam, fermentum imperdiet dui justo nec dolor. Vivamus in mauris euismod, adipiscing ligula non, bibendum ligula. Integer tempus odio ullamcorper vehicula interdum. Vivamus gravida rutrum nunc, vitae aliquam tortor ultrices eu. Vivamus laoreet dui sit amet orci feugiat cursus. Integer sodales at lacus a condimentum. Aliquam erat volutpat. Ut ipsum libero, mollis sit amet porttitor eu, condimentum et felis. Donec tristique ac lorem sit amet mollis. Donec eros ligula, vehicula in vulputate vitae, consectetur et ante. Cras nec diam a orci dapibus blandit et ut mauris. Sed semper felis dui, at feugiat nisl dictum sed. Proin pulvinar, erat a mattis feugiat, urna magna molestie magna, id dapibus mi nisi a magna.</p>
+</div>
+
+<div id="mycontent">
 <section id="link1" class="sections-odd" >
 <h1>link1</h1>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sagittis hendrerit tincidunt. Integer ac viverra orci, sed venenatis augue. Vestibulum placerat, sem id tincidunt lacinia, diam odio porta quam, fermentum imperdiet dui justo nec dolor. Vivamus in mauris euismod, adipiscing ligula non, bibendum ligula. Integer tempus odio ullamcorper vehicula interdum. Vivamus gravida rutrum nunc, vitae aliquam tortor ultrices eu. Vivamus laoreet dui sit amet orci feugiat cursus. Integer sodales at lacus a condimentum. Aliquam erat volutpat. Ut ipsum libero, mollis sit amet porttitor eu, condimentum et felis. Donec tristique ac lorem sit amet mollis. Donec eros ligula, vehicula in vulputate vitae, consectetur et ante. Cras nec diam a orci dapibus blandit et ut mauris. Sed semper felis dui, at feugiat nisl dictum sed. Proin pulvinar, erat a mattis feugiat, urna magna molestie magna, id dapibus mi nisi a magna.</p>
@@ -31,7 +33,6 @@
 <p>Phasellus eu diam malesuada metus rhoncus rhoncus. Mauris facilisis enim nec libero lobortis elementum. Aenean nibh diam, viverra at consectetur id, ultricies iaculis enim. Integer malesuada neque eget massa pellentesque, porta commodo dolor iaculis. Suspendisse potenti. Aliquam ut mi erat. Sed ornare nibh sed nisi vestibulum, adipiscing lobortis diam tempus.</p>
 
 <p>Quisque purus metus, tristique quis placerat in, ullamcorper ac leo. Integer aliquam condimentum accumsan. Nullam velit lectus, mollis quis mauris ac, molestie lobortis ipsum. Maecenas sit amet libero volutpat, pharetra lorem sed, blandit nisi. Aliquam consectetur elit ac fringilla suscipit. Phasellus sollicitudin velit sit amet feugiat laoreet. Cras id urna mauris. Mauris ante lectus, vehicula vitae velit eget, rhoncus imperdiet eros. Mauris fringilla sollicitudin mauris vitae volutpat. Nunc ut pretium dui, in fermentum turpis. Mauris ullamcorper arcu ac fermentum porta. Morbi egestas sollicitudin sapien ut pharetra. Vestibulum facilisis dolor et euismod hendrerit. Morbi consequat aliquam hendrerit.</p>
-
 </section>
 
 <section id="link2" class="sections-even" >
@@ -64,13 +65,32 @@
 <!-- end main body -->
 
 <!-- footer -->
-<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-
+<nav class="navbar-default navbar-static-bottom">
+<ul class="nav navbar-nav">
+    <li><a href="#top" class="">Top</a></li>
+    <li class="navbar-text">Text</li>
+</ul>
 </nav>
 <!-- end footer -->
-<script>
-$('body').scrollspy({ target: '.navbar-example' })
-</script>
 
+<script type="text/javascript" >
+$('body').scrollspy({ target: '#myNavbar', offset:80 });
+
+var clicked = false;
+$('#mynav li a').click(
+function(){
+	$('#mycontent > div > h1').css('padding-top',0);
+	$($( this ).attr('href') + ' > h1').css('padding-top','50px');
+	clicked = true;
+	}
+);	
+
+$('body').on('activate.bs.scrollspy', function () {
+  console.log('scrolling...');
+  if(!clicked)$('#mycontent > div > h1').css('padding-top',0);
+  clicked = false;
+})
+</script>
 </body>
+
 </html>
